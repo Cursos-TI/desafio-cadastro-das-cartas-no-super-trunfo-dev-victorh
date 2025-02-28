@@ -13,7 +13,7 @@ int main(){
     //embora o exercício demande apenas 3 carecteres para código da carta, no momento da compilação a questão do "Enter" as vezes ser considerado caractere acabou ocasionando um
     //problema na atribuição do valor correto para a variável. Por esse motivo aumentei a string dos codigos em uma unidade e funcionou. 
     int populacao1, populacao2, pontosturisticos1, pontosturisticos2;
-    float area1, area2, pib1, pib2, DensPop1, DensPop2, PibPerC1, PibPerC2;
+    float area1, area2, pib1, pib2, DensPop1, DensPop2, PibPerC1, PibPerC2, SuperPoder1, SuperPoder2;
 
     printf("Favor, digitar a seguir as informacoes da Carta 1!\n"); //informando ao usuário que os dados solicitados a seguir serão referente a carta 1
     printf("Digite a letra do estado (A-H): "); //informando ao usuário que na carta aparecerá a letra de A a H
@@ -96,6 +96,18 @@ int main(){
     printf("Densidade Populacional: %.2f hab/km²\n", DensPop2);
     printf("PIB per Capita: %.2f reais\n \n", PibPerC2);
 
+    SuperPoder1 = populacao1 + area1 + pib1+ pontosturisticos1 + PibPerC1 + 1/DensPop1; //no enunciado do exercício ficou um pouco ambíguo se somamos o inverso da densidade populacional
+    SuperPoder2 = populacao2 + area2 + pib2+ pontosturisticos2 + PibPerC2 + 1/DensPop2; //ou somamos tudo e dividimos pela densidade populacional. Meu intuito no código foi a primeira opção.
+                                                                                        //Embora ela seja menos efetiva, pois estaremos adicionando um valor irrisório ao cálculo.
 
+    printf("Comparação de Cartas:\n");
+    printf("População: Carta 1 venceu (%d)\n", populacao1>populacao2);
+    printf("Área: Carta 1 venceu (%d)\n", area1>area2);
+    printf("PIB: Carta 1 venceu (%d)\n", pib1>pib2);
+    printf("Pontos Turísticos: Carta 1 venceu (%d)\n", pontosturisticos1>pontosturisticos2);
+    printf("Densidade Populacional: Carta 1 venceu (%d)\n", DensPop1<DensPop2); //acredito que no enunciado do nível mestre esteja errado, pois densidade pop 2 é menor, logo ela é a vencedora. Lá deveria aparecer "Carta 2 venceu (1)" ou "Carta 1 venceu (0)". Como todos os outros atributos comparados mostram "Carta 1", decidi seguir com "Carta 1 venceu" e em seguida o resultado se verdadeiro(1) ou falso(0). Neste caso é falso, pois a carta 2 vence nesse quesito.
+    printf("PIB per Capita: Carta 1 venceu (%d)\n", PibPerC1>PibPerC2);
+    printf("Super Poder: Carta 1 venceu (%d)\n", SuperPoder1>SuperPoder2);
+    
     return 0;
 }
